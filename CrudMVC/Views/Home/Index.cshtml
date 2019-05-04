@@ -1,0 +1,101 @@
+﻿<div class="container" ng-controller="funcionarioCtrl">
+    <div class="panel-info">
+        <div class="panel-heading">Listagem de Funcionários</div>
+
+        <div class="panel-body">
+            <button type="button" class="btn btn-info" data-target="#AdicionarFuncionario" data-toggle="modal">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+        </div>
+
+        <table class="table table-bordered">
+            <thead style="background-color: azure;">
+                <tr>
+                    <th>FuncionarioId</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Departamento</th>
+                    <th>Cargo</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="func in Funcionarios">
+                    <td>{{func.FuncionarioId}}</td>
+                    <td>{{func.Nome}}</td>
+                    <td>{{func.Email}}</td>
+                    <td>{{func.Departamento}}</td>
+                    <td>{{func.Cargo}}</td>
+                    <td style="width: 200px">
+                        <a href="#" data-target="#AtualizarFuncionario" data-toggle="modal" class="btn btn-success" ng-click="atualizarFuncionarioPorId(func"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a href="#" data-target="#ExcluirFuncionario" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    @* INICIO MODAL - ADICIONAR FUNCIONARIO*@
+
+    <div class="modal" id="AdicionarFuncionario" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="text-info">ADICIONAR FUNCIONARIO</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="AdicionarNovoFuncionarioForm">
+                        <div class="form-group">
+                            <input class="form-control" readonly="readonly" name="funcionarioId" type="hidden" placeholder="Id funcionario" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="nome" ng-model="nome" placeholder="Nome Funcionario" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="nome" ng-model="email" placeholder="Email Funcionario" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="nome" ng-model="departamento" placeholder="Departamento Funcionario" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="nome" ng-model="cargo" placeholder="Cargo Funcionario" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="adicionarFuncionario()">Adicionar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="limparDados()">Fechar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @* FIM MODAL - ADICIONAR FUNCIONARIO*@
+
+    @* INICIO MODAL - ATUALIZAR FUNCIONARIO*@
+    
+    <div class="model" id="AtualizarFuncionario" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="text-warning">Atualizar Funcionario</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    @* FIM MODAL - ATUALIZAR FUNCIONARIO*@
+
+</div>
+
+@section scripts {
+    <script src="~/Angularjsapp/Funcionario/Modules.js"></script>
+    <script src="~/Angularjsapp/Funcionario/Service.js"></script>
+    <script src="~/Angularjsapp/Funcionario/Controller.js"></script>
+}
